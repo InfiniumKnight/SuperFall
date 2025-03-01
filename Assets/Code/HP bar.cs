@@ -33,10 +33,8 @@ public class HealthBar : MonoBehaviour
             if (gameOverImage != null)
                 gameOverImage.gameObject.SetActive(true);
 
-            // Freeze the entire game
-            Time.timeScale = 0f;
-
-            
+            AudioListener.pause = true;
+            AudioListener.volume = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
