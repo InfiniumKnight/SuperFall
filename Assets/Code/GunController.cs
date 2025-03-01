@@ -9,18 +9,21 @@ public class GunController : MonoBehaviour
     public float fireRate;
     public Transform bulletSpawnTransform;
     public GameObject bulletPrefab;
+    
+    // Assign an AudioSource component (with your shooting audio clip) in the Inspector.
+    public AudioSource shootAudio; 
+    
     private float timer;
 
     void Update()
     {
-
         if (timer > 0)
         {
             timer -= Time.deltaTime / fireRate;
         }
 
-        if (Input.GetMouseButton(0) && timer <= 0) {
-
+        if (Input.GetMouseButton(0) && timer <= 0)
+        {
             Shoot();
         }
     }
@@ -28,6 +31,13 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
+        
+        // Play the shooting audio if assigned.
+        if (shootAudio != null)
+        {
+            shootAudio.Play();
+        }
+        
         GameObject bulletObject = Instantiate(bulletPrefab, bulletSpawnTransform.position, bulletSpawnTransform.rotation);
         bulletObject.GetComponent<Rigidbody>().AddForce(bulletSpawnTransform.forward * bulletSpeed, ForceMode.Impulse);
 
