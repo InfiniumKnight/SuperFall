@@ -105,6 +105,7 @@ public class GuardController : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+        
 
     public void TakeDamage(int damage)
     {

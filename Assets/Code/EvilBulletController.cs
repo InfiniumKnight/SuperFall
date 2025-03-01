@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class EvilBulletController : MonoBehaviour
 {
 
   public float lifeTime = 3;
@@ -25,7 +25,7 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-            other.gameObject.GetComponent<GuardController>().TakeDamage(2);
+            other.gameObject.GetComponent<HealthBar>().TakeDamage();
             Destroy(gameObject);
 
         
