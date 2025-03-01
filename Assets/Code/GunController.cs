@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-
+    public ParticleSystem muzzleFlash;
     public float bulletSpeed;
     public float fireRate;
     public Transform bulletSpawnTransform;
@@ -27,6 +27,7 @@ public class GunController : MonoBehaviour
 
     void Shoot()
     {
+        muzzleFlash.Play();
         GameObject bulletObject = Instantiate(bulletPrefab, bulletSpawnTransform.position, bulletSpawnTransform.rotation);
         bulletObject.GetComponent<Rigidbody>().AddForce(bulletSpawnTransform.forward * bulletSpeed, ForceMode.Impulse);
 

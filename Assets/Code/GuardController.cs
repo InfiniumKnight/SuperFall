@@ -8,6 +8,8 @@ public class GuardController : MonoBehaviour
     public Transform Target;
     public NavMeshAgent agent;
 
+    public ParticleSystem deathParticle;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
@@ -116,6 +118,7 @@ public class GuardController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        deathParticle.Play();
         Destroy(gameObject);
     }
 
