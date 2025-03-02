@@ -40,6 +40,7 @@ public class MenuManager : MonoBehaviour
     private void OnStartButtonPressed()
     {
         SceneManager.LoadScene(sceneToLoad);
+         Time.timeScale = 1.0f;
     }
 
     private void OnAboutButtonPressed()
