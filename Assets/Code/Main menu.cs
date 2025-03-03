@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         // Automatically hide the About page on start
         if (aboutImage != null)
         {
@@ -32,9 +34,6 @@ public class MenuManager : MonoBehaviour
     private void OnExitButtonPressed()
     {
         Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
     }
 
     private void OnStartButtonPressed()

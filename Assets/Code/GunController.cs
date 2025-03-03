@@ -9,10 +9,11 @@ public class GunController : MonoBehaviour
     public float fireRate;
     public Transform bulletSpawnTransform;
     public GameObject bulletPrefab;
-    
+
     // Assign an AudioSource component (with your shooting audio clip) in the Inspector.
-    public AudioSource shootAudio; 
-    
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip shootSound;
+
     private float timer;
 
     void Update()
@@ -31,16 +32,16 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
-        
-        // Play the shooting audio if assigned.
-        if (shootAudio != null)
-        {
-            shootAudio.Play();
-        }
+        PlaySound(shootSound);
         
         GameObject bulletObject = Instantiate(bulletPrefab, bulletSpawnTransform.position, bulletSpawnTransform.rotation);
         bulletObject.GetComponent<Rigidbody>().AddForce(bulletSpawnTransform.forward * bulletSpeed, ForceMode.Impulse);
 
         timer = 1;
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+
     }
 }

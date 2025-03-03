@@ -11,6 +11,7 @@ public class SceneSwitcher : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(sceneToLoad)) // Ensure scene name is assigned
             {
+                Cursor.lockState = CursorLockMode.Confined;
                 SceneManager.LoadScene(sceneToLoad); // Switch to assigned scene
             }
             else
